@@ -25,18 +25,28 @@ void HAMM::set_word()
 	word = result;
 }
 
+std::vector<int> HAMM::get_word()
+{
+	return word;
+}
+
+std::vector<int> HAMM::get_codeword()
+{
+	return codeword;
+}
+
 void HAMM::encrypt()
 {
-	code_word = addParityBits();
+	codeword = addParityBits();
 }
 void HAMM::decipher()
 {
 	std::vector<int> decipher_result;
-	check_mistake(code_word, word.size());
+	check_mistake(codeword, word.size());
 }
 void HAMM::set_codeword_mistake(int pos)
 {
-	code_word = flipBit(code_word, pos);
+	codeword = flipBit(codeword, pos);
 }
 
 void HAMM::show_word()
@@ -47,7 +57,7 @@ void HAMM::show_word()
 }
 void HAMM::show_codeword()
 {
-	for (auto i : code_word)
+	for (auto i : codeword)
 		std::cout << i << " ";
 	std::cout << std::endl;
 }
